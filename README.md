@@ -59,3 +59,8 @@ This project is a web application built with Next.js, designed to simulate or cl
 - **Linting:** This project uses `eslint` for code quality. Run `npm run lint` to check for issues.
 - **Building for Production:** To create a production build, run `npm run build`.
 - **HeroUI:** Ensure you have the necessary setups for HeroUI if customizing the theme in `tailwind.config.ts`.
+
+## Test Login
+
+username : admin@mail.com
+password : password123
