@@ -1,8 +1,9 @@
-import { redirect } from "next/navigation";
-
 // Halaman Root (/)
 export default function Home() {
-  // Redirect otomatis dari root '/' ke halaman login '/auth/login'
-  // Karena aplikasi ini membutuhkan autentikasi sejak awal
-  redirect("/auth/login");
+  // Redirect sekarang ditangani oleh next.config.ts
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <p>Redirecting to login...</p>
+    </div>
+  );
 }
