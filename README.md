@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nifi Clone
 
-## Getting Started
+This project is a web application built with Next.js, designed to simulate or clone functionalities similar to Nifi, utilizing React Flow for node-based visualizations.
 
-First, run the development server:
+## Tech Stack Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:**
+  - [Tailwind CSS 4](https://tailwindcss.com/)
+  - [HeroUI](https://heroui.com/) (formerly NextUI)
+- **State Management:** [Zustand](https://zustand-demo.pmnd.rs/)
+- **Form Handling:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Visualization/Flow:** [@xyflow/react](https://reactflow.dev/) (React Flow)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation Steps
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone <your-repository-url>
+   cd nifi-clone
+   ```
 
-## Learn More
+2. **Install dependencies:**
+   Using npm:
+   ```bash
+   npm install
+   ```
+   Or using yarn:
+   ```bash
+   yarn install
+   ```
+   Or using pnpm:
+   ```bash
+   pnpm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## How to run the application locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Start the development server:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-## Deploy on Vercel
+2. **Access the application:**
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Additional Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Linting:** This project uses `eslint` for code quality. Run `npm run lint` to check for issues.
+- **Building for Production:** To create a production build, run `npm run build`.
+- **HeroUI:** Ensure you have the necessary setups for HeroUI if customizing the theme in `tailwind.config.ts`.

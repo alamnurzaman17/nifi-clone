@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+/* 
+   TEMA CONFIGURATION (Optional di v4)
+   Anda bisa mendefinisikan variable CSS di sini 
+*/
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #171717;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark Mode Overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +19,19 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 
+   FIX STYLE HEROUI
+   Kita tetap butuh ini agar input tidak memiliki border hitam ganda 
+*/
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  input {
+    outline: none;
+    border-style: none;
+  }
 }
