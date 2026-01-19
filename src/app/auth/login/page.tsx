@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Button, Input } from "@heroui/react";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,7 +10,43 @@ import Image from "next/image";
 import { Modal, ModalContent, ModalBody, useDisclosure } from "@heroui/react";
 import { X } from "lucide-react";
 
-export default function LoginPage() {
+// Loading Component extracted for reuse
+function LoadingState() {
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white animate-in fade-in duration-300">
+      <div className="flex items-center gap-4 mb-12">
+        {/* Logo Icon */}
+        <div className="relative w-[60px] h-[60px]">
+          <Image
+            src="/logo/logo-icon.svg"
+            alt="S.2.R.E Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+
+        {/* Logo Text */}
+        <div className="flex flex-col justify-center">
+          <h1 className="text-2xl font-black text-slate-900 leading-none tracking-tight">
+            SOVWARE
+          </h1>
+          <p className="text-sm font-semibold text-slate-600 tracking-widest mt-1">
+            EDGE SYSTEM
+          </p>
+        </div>
+      </div>
+
+      {/* Custom Spinner */}
+      <div className="relative w-10 h-10">
+        <div className="absolute inset-0 border-3 border-slate-200 rounded-full"></div>
+        <div className="absolute inset-0 border-3 border-t-[#2c69a5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+      </div>
+    </div>
+  );
+}
+
+function LoginContent() {
   // --- State Management ---
   const [isVisible, setIsVisible] = useState(false); // Toggle lihat password
   const [email, setEmail] = useState(""); // Input Email
@@ -73,38 +109,7 @@ export default function LoginPage() {
 
   // Tampilan Layar Loading (Spinner Fullscreen)
   if (isLoading) {
-    return (
-      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white animate-in fade-in duration-300">
-        <div className="flex items-center gap-4 mb-12">
-          {/* Logo Icon */}
-          <div className="relative w-[60px] h-[60px]">
-            <Image
-              src="/logo/logo-icon.svg"
-              alt="S.2.R.E Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-
-          {/* Logo Text */}
-          <div className="flex flex-col justify-center">
-            <h1 className="text-2xl font-black text-slate-900 leading-none tracking-tight">
-              SOVWARE
-            </h1>
-            <p className="text-sm font-semibold text-slate-600 tracking-widest mt-1">
-              EDGE SYSTEM
-            </p>
-          </div>
-        </div>
-
-        {/* Custom Spinner */}
-        <div className="relative w-10 h-10">
-          <div className="absolute inset-0 border-3 border-slate-200 rounded-full"></div>
-          <div className="absolute inset-0 border-3 border-t-[#2c69a5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
-        </div>
-      </div>
-    );
+    return <LoadingState />;
   }
 
   // Tampilan Halaman Login Utama
@@ -372,5 +377,13 @@ export default function LoginPage() {
         </ModalContent>
       </Modal>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <LoginContent />
+    </Suspense>
   );
 }
